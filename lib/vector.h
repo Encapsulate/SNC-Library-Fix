@@ -7,8 +7,6 @@
 namespace std {
 	template<class T>
 	class vector {
-		//private:
-	//private:
 		T **_data;
 		int _count;
 		int _capacity;
@@ -17,7 +15,7 @@ namespace std {
 		~vector() { free(_data); _count = 0;; _capacity = 0; }
 
 		void initialize() {
-			this->_data = (T**)malloc(/*sizeof(T) **/ 1);
+			this->_data = (T**)malloc(1);
 			this->_count = 0;
 			this->_capacity = 1;
 		}
