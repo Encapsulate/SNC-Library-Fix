@@ -2,6 +2,15 @@
 #include <sys/process.h>
 #include <sys/integertypes.h>
 
+int memcmp(const void* s1, const void* s2, size_t n) {
+	const unsigned char *p1 = (const unsigned char*)s1, *p2 = (const unsigned char*)s2;
+	while (n--)
+		if (*p1 != *p2)
+			return *p1 - *p2;
+		else
+			*p1++, *p2++;
+	return 0;
+}
 void *memcpy(void *destination, const void *source, size_t num) {
 	system_call_4(905, (uint64_t)sys_process_getpid(), (uint64_t)destination, num, (uint64_t)source);
 	return_to_user_prog(void*);
@@ -31,8 +40,11 @@ char *strcat(char *destination, const char *source) {
 	return ret;
 }
 
-char *chcat(char *destination, char source) {
-	if (*destination)
+char chcat(char *destination, char source) {
+	/*if (*destination)
 		while (+(++destination));
-	return &(*(destination++) = source);
+	return &(*(destination++) = source);*/
+	if (*destination != '\0')
+		while (*(++destination));
+	return (*(destination++) = source);
 }

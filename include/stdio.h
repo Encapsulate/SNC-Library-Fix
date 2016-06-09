@@ -4,6 +4,10 @@
 #include <limits.h>
 #include <stdarg.h>
 
+#ifndef NULL
+#define NULL 0
+#endif
+
 int vsnprintf(char *str, size_t size, const char *format, va_list args);
 void fmtstr(char *str, size_t *len, size_t size, const char *value, int width, int precision, int flags);
 void fmtint(char *str, size_t *len, size_t size, long long int value, int base, int width, int precision, int flags);

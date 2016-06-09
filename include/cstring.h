@@ -4,11 +4,14 @@
 #include <sys/sys_types.h>
 #include <stdarg.h>
 
+int memcmp(const void* s1, const void* s2, size_t n);
+
 void *memcpy(void *destination, const void *source, size_t num);
+
 void *memset(void *ptr, int value, size_t num);
 size_t strlen(const char *str);
 int strcmp(const char* str1, const char* str2);
 char *strcat(char *destination, const char *source);
-char *chcat(char *destination, char source);
+char chcat(char *destination, char source);
 
 #endif /* ___CSTRING_H__ */
